@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Taimesensor</title>
+</head>
+<body>
+    <canvas id="moisture"></canvas>
+    <script>
+        var ctx = document.getElementById('moisture').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ labels | safe }},
+                datasets: [{
+                    label: 'Moisture',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: {{ values | safe }},
+                    fill: false,
+                    lineTension: 0.1
+                }]
+            },
+            options: {}
+        });
+    </script>
+</body>
+</html>
